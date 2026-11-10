@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Quiz gamificado por equipes sobre Metodologias Ágeis">
+  <title>Desafio Ágil por Equipes | UniALFA</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background-orb orb-one" aria-hidden="true"></div><div class="background-orb orb-two" aria-hidden="true"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <a class="brand-mark" href="https://www.alfaumuarama.edu.br/fau/" target="_blank" rel="noopener noreferrer" aria-label="Abrir o site oficial da UniALFA"><img src="assets/logo-unialfa.png" alt="UniALFA Faculdade"></a>
+        <div><p class="eyebrow">Metodologias Ágeis</p><h1>Desafio Ágil por Equipes</h1></div>
+      </div>
+      <div id="scoreboard" class="scoreboard" aria-label="Resumo da partida">
+        <div><strong id="team-count">0</strong><span>equipes</span></div><div><strong id="answered">0</strong><span>respondidas</span></div><div><strong id="remaining">30</strong><span>restantes</span></div>
+      </div>
+    </header>
+
+    <section id="setup-screen" class="screen active" aria-labelledby="setup-title">
+      <div class="hero-card setup-hero">
+        <div class="hero-copy">
+          <p class="eyebrow accent">Gamificação da revisão</p><h2 id="setup-title">Monte as equipes e comece a disputa.</h2>
+          <p>As equipes respondem alternadamente. Cada acerto vale 10 pontos e, depois da resposta, o turno passa automaticamente.</p>
+          <form id="team-form" class="team-form">
+            <div class="setup-heading"><label>Equipes participantes</label><button id="add-team-button" class="button compact ghost" type="button">+ Adicionar equipe</button></div>
+            <div id="team-inputs" class="team-inputs"></div><p id="setup-error" class="setup-error" role="alert" hidden></p>
+            <div class="setup-options">
+              <label class="toggle"><input id="shuffle-toggle" type="checkbox" checked><span>Embaralhar questões</span></label>
+              <label class="toggle"><input id="shuffle-teams-toggle" type="checkbox"><span>Sortear ordem das equipes</span></label>
+            </div>
+            <button class="button primary start-game" type="submit">Iniciar competição</button>
+          </form>
+        </div>
+        <div class="hero-visual" aria-hidden="true"><div class="cycle"><span>Responder</span><span>Pontuar</span><span>Alternar</span></div><div class="cycle-center">30</div></div>
+      </div>
+      <div class="how-it-works"><div><span>01</span><p>Cadastre duas ou mais equipes.</p></div><div><span>02</span><p>A equipe da vez escolhe uma questão.</p></div><div><span>03</span><p>Acertou? Soma 10 pontos.</p></div></div>
+    </section>
+
+    <section id="board-screen" class="screen" aria-labelledby="board-title">
+      <div id="turn-banner" class="turn-banner" aria-live="polite"><div><span class="turn-label">Vez de</span><strong id="current-team-name"></strong></div><span>Escolha uma questão</span></div>
+      <div id="team-ranking" class="team-ranking" aria-label="Placar das equipes"></div>
+      <div class="section-heading">
+        <div><p class="eyebrow accent">Painel de questões</p><h2 id="board-title">Qual será o próximo desafio?</h2></div>
+        <div class="toolbar"><button id="new-game-button" class="button ghost" type="button">Nova partida</button><button id="reset-button" class="button ghost" type="button">Reiniciar placar</button></div>
+      </div>
+      <div id="question-grid" class="question-grid" aria-live="polite"></div>
+      <div class="legend" aria-label="Legenda"><span><i class="status-dot available"></i>Disponível</span><span><i class="status-dot correct"></i>Acerto</span><span><i class="status-dot incorrect"></i>Erro</span></div>
+    </section>
+
+    <section id="question-screen" class="screen" aria-labelledby="question-title">
+      <div class="question-turn"><span>Respondendo agora</span><strong id="question-team-name"></strong></div>
+      <article class="question-card">
+        <div class="question-meta"><span id="question-number"></span><span id="question-topic"></span></div><h2 id="question-title"></h2>
+        <div id="options" class="options" role="group" aria-label="Alternativas"></div>
+        <div id="feedback" class="feedback" hidden aria-live="assertive"><div class="feedback-icon" aria-hidden="true"></div><div><p id="feedback-title" class="feedback-title"></p><p id="feedback-text"></p></div></div>
+        <div class="question-actions"><button id="return-button" class="button primary" type="button" hidden>Passar para a próxima equipe</button></div>
+      </article>
+    </section>
+
+    <section id="finish-screen" class="screen" aria-labelledby="finish-title">
+      <div class="finish-card"><div class="trophy" aria-hidden="true">★</div><p class="eyebrow accent">Competição concluída</p><h2 id="finish-title">Resultado final</h2><p id="finish-message"></p><div id="final-ranking" class="final-ranking"></div>
+        <div class="finish-actions"><button id="review-button" class="button primary" type="button">Revisar painel</button><button id="restart-button" class="button ghost" type="button">Jogar novamente</button><button id="change-teams-button" class="button ghost" type="button">Trocar equipes</button></div>
+      </div>
+    </section>
+  </main>
+  <footer><span>Funciona localmente e salva a partida neste navegador.</span><span>Metodologias Ágeis · UniALFA</span></footer><script src="script.js"></script>
+</body>
+</html>
